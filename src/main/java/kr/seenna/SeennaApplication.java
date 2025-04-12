@@ -1,0 +1,13 @@
+package kr.seenna;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SeennaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SeennaApplication.class, args);
+	}
+
+}
