@@ -1,1 +1,6 @@
 rootProject.name = 'seenna'
+
+include 'domain'
+include 'common'
+include 'app:seennaApp'
+include 'app:seennaAdminApp'
