@@ -1,4 +1,4 @@
-# Seenna Project
+# SinnaUniverse Project
 
 ## 프로젝트 소개
 
