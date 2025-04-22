@@ -1,4 +1,4 @@
-rootProject.name = 'seenna-universe'
+rootProject.name = 'sinna-universe'
 
 include 'module-domain'
 include 'module-application'
