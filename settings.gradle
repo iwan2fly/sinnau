@@ -1,6 +1,5 @@
-rootProject.name = 'seenna'
+rootProject.name = 'seenna-universe'
 
-include 'domain'
-include 'common'
-include 'app:seennaApp'
-include 'app:seennaAdminApp'
+include 'module-domain'
+include 'module-application'
+include 'module-common'

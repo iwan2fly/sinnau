@@ -1,51 +1,33 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.4.4'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.springframework.boot' version '3.4.4' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+    id 'java'
 }
 
 allprojects {
-	group = 'kr.seenna'
-	version = '0.0.1-SNAPSHOT'
-
-	repositories {
-		mavenCentral()
-	}
-
+    group = 'com.seenna'
+    version = '0.0.1-SNAPSHOT'
+    
+    repositories {
+        mavenCentral()
+    }
 }
 
 subprojects {
-
-	apply plugin: 'java'
-	apply plugin: 'org.springframework.boot'
-	apply plugin: 'io.spring.dependency-management'
-
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
-
-	java {
-		toolchain {
-			languageVersion = JavaLanguageVersion.of(21)
-		}
-	}
-
-	configurations {
-		compileOnly {
-			extendsFrom annotationProcessor
-		}
-	}
-
-	dependencies {
-		// Lombok (모듈 공통)
-		compileOnly 'org.projectlombok:lombok'
-		annotationProcessor 'org.projectlombok:lombok'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	}
-
-	tasks.named('test') {
-		useJUnitPlatform()
-	}
-
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    
+    sourceCompatibility = '21'
+    
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+    
+    test {
+        useJUnitPlatform()
+    }
 }
-
-
