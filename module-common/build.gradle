@@ -1,3 +1,7 @@
-dependencies {
-    // 공통 모듈 의존성은 추후 추가
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }
