@@ -1,5 +1,7 @@
-dependencies {
-    // 애플리케이션 모듈 의존성은 추후 추가
-    implementation project(':module-domain')
-    implementation project(':module-common')
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }
