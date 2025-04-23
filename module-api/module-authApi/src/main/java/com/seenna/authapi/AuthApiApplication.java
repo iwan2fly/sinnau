@@ -1,4 +1,4 @@
-package com.seenna.api.auth;
+package com.seenna.authapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

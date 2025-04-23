@@ -1,4 +1,4 @@
-package com.seenna.api.auth.controller;
+package com.seenna.authapi.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
