@@ -2,6 +2,9 @@ plugins {
     id 'org.springframework.boot' version '3.4.4' apply false
     id 'io.spring.dependency-management' version '1.1.7' apply false
     id 'java'
+    id 'jacoco'
+    id 'org.sonarqube' version '4.4.1.3373'
+    id 'com.diffplug.spotless' version '6.22.0'
 }
 
 allprojects {
@@ -17,6 +20,8 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
+    apply plugin: 'com.diffplug.spotless'
     
     sourceCompatibility = '21'
     
@@ -29,5 +34,25 @@ subprojects {
     
     test {
         useJUnitPlatform()
+        finalizedBy jacocoTestReport
     }
+    
+    jacocoTestReport {
+        dependsOn test
+        reports {
+            xml.required = true
+            html.required = true
+        }
+    }
+    
+    spotless {
+        java {
+            googleJavaFormat()
+            removeUnusedImports()
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+    }
+    
+    check.dependsOn spotlessCheck
 }

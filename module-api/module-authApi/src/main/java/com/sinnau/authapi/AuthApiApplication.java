@@ -1,11 +1,11 @@
-package com.seenna.authapi;
+package com.sinnau.authapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AuthApiApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(AuthApiApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AuthApiApplication.class, args);
+  }
 }
