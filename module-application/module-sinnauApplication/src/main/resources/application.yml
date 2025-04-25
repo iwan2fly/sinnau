@@ -8,6 +8,6 @@ spring:
     suffix: .html
   web:
     resources:
-      static-locations: classpath:/static/,classpath:/public/,classpath:/frontend/build/
+      static-locations: classpath:/static/
   mvc:
-    static-path-pattern: /**
+    static-path-pattern: /static/**
