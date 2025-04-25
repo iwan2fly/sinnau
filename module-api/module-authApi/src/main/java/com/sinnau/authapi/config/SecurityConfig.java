@@ -16,21 +16,22 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .csrf(csrf -> csrf.disable())
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> auth
-            .requestMatchers(
-                new AntPathRequestMatcher("/"),
-                new AntPathRequestMatcher("/index.html"),
-                new AntPathRequestMatcher("/static/**"),
-                new AntPathRequestMatcher("/css/**"),
-                new AntPathRequestMatcher("/js/**"),
-                new AntPathRequestMatcher("/images/**"),
-                new AntPathRequestMatcher("/api/auth/**")
-            ).permitAll()
-            .anyRequest().authenticated()
-        );
+    http.csrf(csrf -> csrf.disable())
+        .sessionManagement(
+            session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(
+            auth ->
+                auth.requestMatchers(
+                        new AntPathRequestMatcher("/"),
+                        new AntPathRequestMatcher("/index.html"),
+                        new AntPathRequestMatcher("/static/**"),
+                        new AntPathRequestMatcher("/css/**"),
+                        new AntPathRequestMatcher("/js/**"),
+                        new AntPathRequestMatcher("/images/**"),
+                        new AntPathRequestMatcher("/api/auth/**"))
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated());
 
     return http.build();
   }
