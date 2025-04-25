@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SinnaApplication {
+public class SinnauApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SinnaApplication.class, args);
+        SpringApplication.run(SinnauApplication.class, args);
     }
-} 
+}
