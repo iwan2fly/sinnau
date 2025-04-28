@@ -1,0 +1,97 @@
+/* Welcome.css */
+.welcome-container {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 380px;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-container h2 {
+  color: #5a67d8;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: #f8fafc;
+}
+
+.form-group input:focus {
+  border-color: #5a67d8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2);
+  background-color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #5a67d8, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(90, 103, 216, 0.2);
+  margin-top: 10px;
+}
+
+button:hover {
+  background: linear-gradient(to right, #4c51bf, #6b46c1);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(90, 103, 216, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.welcome-message {
+  text-align: center;
+}
+
+.welcome-message h2 {
+  color: #5a67d8;
+  margin-bottom: 10px;
+}
+
+.welcome-message p {
+  font-size: 18px;
+  color: #4a5568;
+  margin-bottom: 30px;
+}
