@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
     id 'java'
-    id 'org.siouan.frontend-jdk11' version '6.0.0'
+    id 'org.siouan.frontend-jdk21' version '10.0.0'
 }
 
 group = 'com.sinnau'
@@ -35,10 +35,6 @@ frontend {
     nodeVersion = '16.13.0'
     installScript = 'install'
     assembleScript = 'run build'
-    nodeDistribution {
-        downloadUrl = "https://nodejs.org/dist/v\${nodeVersion}/node-v\${nodeVersion}-win-x64.zip"
-    }
-    sourceDirectory = file('src/main/frontend')
     packageJsonDirectory = file('src/main/frontend')
 }
 
