@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
     id 'java'
+    id 'org.siouan.frontend-jdk11' version '6.0.0'
 }
 
 group = 'com.sinnau'
@@ -14,6 +15,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -27,4 +29,22 @@ test {
 
 springBoot {
     mainClass = 'com.sinnau.sinnauApplication.SinnauApplication'
-} 
+}
+
+frontend {
+    nodeVersion = '16.13.0'
+    installScript = 'install'
+    assembleScript = 'run build'
+    nodeDistribution {
+        downloadUrl = "https://nodejs.org/dist/v\${nodeVersion}/node-v\${nodeVersion}-win-x64.zip"
+    }
+    sourceDirectory = file('src/main/frontend')
+    packageJsonDirectory = file('src/main/frontend')
+}
+
+tasks.named('processResources') {
+    dependsOn('assembleFrontend')
+    from('src/main/frontend/build') {
+        into 'static'
+    }
+}
