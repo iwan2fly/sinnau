@@ -29,9 +29,7 @@ public class AuthController {
 
   @PostMapping("/signup")
   public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
-    log.info("signup");
-    log.info(request.toString());
-    
+
     try {
       // 이메일 중복 확인
       if (userService.isEmailExists(request.getEmail())) {
