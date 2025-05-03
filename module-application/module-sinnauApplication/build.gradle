@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
     id 'java'
-    id 'org.siouan.frontend-jdk21' version '10.0.0' // 버전 업데이트
 }
 
 group = 'com.sinnau'
@@ -14,7 +13,6 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -31,16 +29,3 @@ springBoot {
     mainClass = 'com.sinnau.sinnauApplication.SinnauApplication'
 }
 
-frontend {
-    nodeVersion = '16.13.0'
-    installScript = 'install'
-    assembleScript = 'run build'
-    packageJsonDirectory = file('src/main/frontend')
-}
-
-tasks.named('processResources') {
-    dependsOn('assembleFrontend')
-    from('src/main/frontend/build') {
-        into 'static'
-    }
-}

@@ -13,9 +13,23 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-            auth -> auth
-                .requestMatchers("/", "/index.html", "/static/**", "/css/**", "/js/**", "/images/**", "/login", "/api/**", "/manifest.json", "/*.png", "/*.ico", "/asset-manifest.json").permitAll()
-                .anyRequest().authenticated())
+            auth ->
+                auth.requestMatchers(
+                        "/",
+                        "/index.html",
+                        "/static/**",
+                        "/css/**",
+                        "/js/**",
+                        "/images/**",
+                        "/login",
+                        "/api/**",
+                        "/manifest.json",
+                        "/*.png",
+                        "/*.ico",
+                        "/asset-manifest.json")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
         .formLogin(form -> form.loginPage("/login").permitAll())
         .logout(logout -> logout.permitAll())
         .csrf(csrf -> csrf.disable());
