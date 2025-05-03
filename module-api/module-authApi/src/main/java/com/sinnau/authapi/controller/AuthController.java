@@ -18,7 +18,7 @@ public class AuthController {
   public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
 
     log.info("signup");
-    log.info( request.toString() );
+    log.info(request.toString());
     // TODO: Implement signup logic
     return ResponseEntity.ok().build();
   }
