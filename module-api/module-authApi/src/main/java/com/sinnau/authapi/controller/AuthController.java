@@ -21,7 +21,6 @@ public class AuthController {
   @PostMapping("/signup")
   public ResponseEntity<CommonApiResponse<?>> signup(@RequestBody SignupRequest request) {
 
-    log.info("signup");
     log.info(request.toString());
     
     // 응답 객체 생성 (DTO 패턴)
