@@ -11,4 +11,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     
     implementation 'org.springframework:spring-context'
+    
+    // module-user 의존성 추가
+    implementation project(':module-domain:module-user')
 }

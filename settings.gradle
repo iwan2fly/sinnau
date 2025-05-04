@@ -1,6 +1,8 @@
 rootProject.name = 'sinnau'
 
 include 'module-domain'
+include 'module-domain:module-auth'  // 추가
+include 'module-domain:module-user'  // 추가
 include 'module-application'
 include 'module-common'
 include 'module-api'
