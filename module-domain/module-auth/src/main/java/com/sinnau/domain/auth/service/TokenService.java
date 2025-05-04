@@ -41,7 +41,7 @@ public class TokenService {
         Date refreshTokenExpiryDate = Date.from(refreshTokenExpiry.atZone(ZoneId.systemDefault()).toInstant());
 
         String accessToken = Jwts.builder()
-                .setSubject(user.getUsername())
+                .setSubject(user.getEmail())     // JWT의 주제(sub)를 사용자의 email로 설정
                 .claim("roles", user.getRoles().stream()
                         .map(Enum::name)
                         .collect(Collectors.toList()))
@@ -51,7 +51,7 @@ public class TokenService {
                 .compact();
 
         String refreshToken = Jwts.builder()
-                .setSubject(user.getUsername())
+                .setSubject(user.getEmail())
                 .setIssuedAt(nowDate)
                 .setExpiration(refreshTokenExpiryDate)
                 .signWith(key)
