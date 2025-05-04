@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,7 +34,19 @@ public class User {
     @Column
     private LocalDateTime updatedAt;
 
-    // 권한(역할) 필드 예시(선택)
-    @Column(nullable = false)
-    private String role = "USER";
+    // 권한(역할) 필드를 컬렉션으로 변경
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+    private List<String> roles = new ArrayList<>();
+    
+    // 기본 권한 추가 메서드
+    public void addDefaultRole() {
+        if (roles == null) {
+            roles = new ArrayList<>();
+        }
+        if (roles.isEmpty()) {
+            roles.add("USER");
+        }
+    }
 }
