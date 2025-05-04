@@ -1,4 +1,4 @@
-package com.sinnau.common.api;
+package com.sinnau.common.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
