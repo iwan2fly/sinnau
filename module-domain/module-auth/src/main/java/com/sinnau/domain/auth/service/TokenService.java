@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 /** JWT 토큰 생성 및 검증을 담당하는 서비스 클래스입니다. Access Token과 Refresh Token을 생성하고 관리합니다. */
 @Service
 public class TokenService {
+
   private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
   private static final Duration ACCESS_TOKEN_VALIDITY = Duration.ofHours(24); // 24시간
   private static final Duration REFRESH_TOKEN_VALIDITY = Duration.ofDays(7); // 7일
@@ -28,6 +29,7 @@ public class TokenService {
    * @return 생성된 Access Token과 Refresh Token을 포함한 Token 객체
    */
   public Token generateToken(User user) {
+
     LocalDateTime now = LocalDateTime.now();
     LocalDateTime accessTokenExpiry = now.plus(ACCESS_TOKEN_VALIDITY);
     LocalDateTime refreshTokenExpiry = now.plus(REFRESH_TOKEN_VALIDITY);

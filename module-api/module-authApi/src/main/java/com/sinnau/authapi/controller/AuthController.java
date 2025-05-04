@@ -1,18 +1,16 @@
 package com.sinnau.authapi.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-  private static final Logger log = LoggerFactory.getLogger(AuthController.class);
 
   @PostMapping("/signup")
   public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
@@ -30,17 +28,17 @@ public class AuthController {
   }
 
   public static class SignupRequest {
-    private String username;
+    private String loginName;
     private String password;
     private String email;
 
     // Getters and Setters
-    public String getUsername() {
-      return username;
+    public String getLoginName() {
+      return loginName;
     }
 
-    public void setUsername(String username) {
-      this.username = username;
+    public void setLoginName(String loginName) {
+      this.loginName = loginName;
     }
 
     public String getPassword() {
@@ -61,16 +59,16 @@ public class AuthController {
   }
 
   public static class LoginRequest {
-    private String username;
+    private String loginName;
     private String password;
 
     // Getters and Setters
-    public String getUsername() {
-      return username;
+    public String getLoginName() {
+      return loginName;
     }
 
-    public void setUsername(String username) {
-      this.username = username;
+    public void setLoginName(String loginName) {
+      this.loginName = loginName;
     }
 
     public String getPassword() {
