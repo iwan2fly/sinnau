@@ -43,7 +43,7 @@ public class TokenService {
         String accessToken = Jwts.builder()
                 .setSubject(user.getEmail())     // JWT의 주제(sub)를 사용자의 email로 설정
                 .claim("roles", user.getRoles().stream()
-                        .map(Enum::name)
+                        .map(Object::toString)
                         .collect(Collectors.toList()))
                 .setIssuedAt(nowDate)
                 .setExpiration(accessTokenExpiryDate)
