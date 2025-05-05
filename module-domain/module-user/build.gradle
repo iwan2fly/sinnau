@@ -1,11 +1,24 @@
-group = 'com.sinnau'
-version = '0.0.1-SNAPSHOT'
+plugins {
+    id 'java'
+}
+
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 
 dependencies {
-    implementation project(':module-common')
     
     // JPA 의존성 추가
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
+    implementation("jakarta.persistence:jakarta.persistence-api")
     
     // Spring Security 의존성 추가
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -18,4 +31,6 @@ dependencies {
     
     // 또는 PostgreSQL 사용 시 (선택사항)
     // runtimeOnly 'org.postgresql:postgresql'
+
+    implementation project(':module-common')
 }
