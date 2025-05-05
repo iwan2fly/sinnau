@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @Slf4j
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class AuthApiExceptionHandler {
 
     // 사용자 정의 예외 처리
     @ExceptionHandler(SinnauRuntimeException.class)
