@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sinnau.authapi.model.LoginRequest;
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
-import com.sinnau.common.api.model.CommonApiResponse; // 패키지 경로 정확함
+import com.sinnau.common.model.CommonApiResponse; // 패키지 경로 정확함
 
 
 @Slf4j
