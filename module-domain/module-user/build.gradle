@@ -27,10 +27,9 @@ dependencies {
     // runtimeOnly 'com.h2database:h2'
     
     // 또는 MySQL/MariaDB 사용 시 (선택사항)
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    
-    // 또는 PostgreSQL 사용 시 (선택사항)
-    // runtimeOnly 'org.postgresql:postgresql'
+    // runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
+
 
     implementation project(':module-common')
 }
