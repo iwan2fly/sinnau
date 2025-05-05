@@ -12,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "users") // 테이블명 지정(선택)
 public class User {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
