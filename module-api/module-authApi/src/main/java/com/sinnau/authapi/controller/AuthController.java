@@ -1,7 +1,7 @@
 package com.sinnau.authapi.controller;
 
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +12,15 @@ import com.sinnau.authapi.model.LoginRequest;
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
 import com.sinnau.common.api.model.CommonApiResponse; // 패키지 경로 정확함
-import com.sinnau.
+
 
 @Slf4j
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
-  private final AuthService authService;
+  @Autowired
+  // private final UserService userService;
 
   @PostMapping("/signup")
   public ResponseEntity<CommonApiResponse<?>> signup(@RequestBody SignupRequest request) {
@@ -27,10 +28,10 @@ public class AuthController {
     log.info(request.toString());
     
     // 응답 객체 생성 (DTO 패턴)
-    SignupResponse signupResponse = authService.signup(request);
+    // SignupResponse signupResponse = authService.signup(request);
 
     
-    return ResponseEntity.ok(CommonApiResponse.success(response)); // CommonApiResponse로 감싸서 반환
+    return ResponseEntity.ok(CommonApiResponse.success(new SignupResponse())); // CommonApiResponse로 감싸서 반환
   }
 
   @PostMapping("/login")

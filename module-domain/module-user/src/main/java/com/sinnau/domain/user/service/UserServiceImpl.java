@@ -3,6 +3,8 @@ package com.sinnau.domain.user.service;
 import com.sinnau.domain.user.model.User;
 import com.sinnau.domain.user.repository.UserRepository;
 import java.time.LocalDateTime;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
