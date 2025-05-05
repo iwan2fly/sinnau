@@ -12,12 +12,12 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public class CommonApiResponse<T> {
     private int status;      // HTTP 상태 코드
-    private String message;  // 성공/실패 메시지
+    private String message;
     private T data;          // 실제 데이터
 
     // 성공 응답 생성 메서드
     public static <T> CommonApiResponse<T> success(T data) {
-        return new CommonApiResponse<>(HttpStatus.OK.value(), "Success", data);
+        return new CommonApiResponse<>(HttpStatus.OK.value(), null, data);
     }
 
     // 실패 응답 생성 메서드

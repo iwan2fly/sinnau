@@ -30,7 +30,7 @@ public class AuthController {
     log.info(request.toString());
     
     SignupResponse signupResponse = authService.signup(request);
-
+    log.info( signupResponse.toString() );
     
     return ResponseEntity.ok(CommonApiResponse.success(new SignupResponse())); // CommonApiResponse로 감싸서 반환
   }

@@ -1,6 +1,6 @@
 package com.sinnau.domain.user.service;
 
-import com.sinnau.domain.user.model.User;
+import com.sinnau.domain.user.entity.User;
 
 public interface UserService {
   /**

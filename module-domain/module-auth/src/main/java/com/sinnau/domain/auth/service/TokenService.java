@@ -1,7 +1,7 @@
 package com.sinnau.domain.auth.service;
 
 import com.sinnau.domain.auth.model.Token;
-import com.sinnau.domain.user.model.User;
+import com.sinnau.domain.user.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

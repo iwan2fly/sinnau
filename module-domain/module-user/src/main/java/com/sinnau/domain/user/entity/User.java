@@ -1,4 +1,4 @@
-package com.sinnau.domain.user.model;
+package com.sinnau.domain.user.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
