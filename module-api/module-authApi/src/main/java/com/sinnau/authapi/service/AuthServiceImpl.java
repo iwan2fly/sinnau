@@ -2,10 +2,14 @@ package com.sinnau.authapi.service;
 
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
+import com.sinnau.domain.user.service.UserService; // UserService import 추가
+import org.apache.commons.lang3.StringUtils; // StringUtils import 추가
 
+import lombok.RequiredArgsConstructor; // RequiredArgsConstructor 추가
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor // 생성자 주입을 위한 어노테이션 추가
 public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;

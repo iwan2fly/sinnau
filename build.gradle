@@ -43,7 +43,7 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
 
         // https://mvnrepository.com/artifact/org.apache/org.apache.commons.lang3
-        implementation("org.apache:org.apache.commons.lang3")
+        implementation 'org.apache.commons:commons-lang3'
     }
     
     test {
