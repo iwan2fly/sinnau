@@ -30,8 +30,7 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'jacoco'
-    // apply plugin: 'com.diffplug.spotless' 제거
-    
+
     java {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -42,6 +41,9 @@ subprojects {
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+
+        // https://mvnrepository.com/artifact/org.apache/org.apache.commons.lang3
+        implementation("org.apache:org.apache.commons.lang3")
     }
     
     test {
