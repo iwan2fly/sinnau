@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @Entity
-@Table(name = "users") // 테이블명 지정(선택)
+@Table(name = "user") // 테이블명 지정(선택)
 public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Long userId;
 
   @Column(nullable = false, unique = true, length = 100)
   private String email;
@@ -36,7 +38,7 @@ public class User {
 
   // 권한(역할) 필드를 컬렉션으로 변경
   @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+  @CollectionTable(name = "userRole", joinColumns = @JoinColumn(name = "userId"))
   @Column(name = "role", nullable = false)
   private List<String> roles = new ArrayList<>();
 

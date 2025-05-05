@@ -5,11 +5,13 @@ import com.sinnau.domain.user.repository.UserRepository;
 import java.time.LocalDateTime;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -39,6 +41,8 @@ public class UserServiceImpl implements UserService {
     user.setEnabled(true);
     //        user.setRole("USER"); // 기본 역할 설정
     user.setCreatedAt(LocalDateTime.now());
+
+    log.debug( user.toString());
 
     // 저장 및 반환
     return userRepository.save(user);
