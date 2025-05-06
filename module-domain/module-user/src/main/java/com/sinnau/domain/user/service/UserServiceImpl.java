@@ -1,6 +1,7 @@
 package com.sinnau.domain.user.service;
 
 import com.sinnau.domain.user.entity.User;
+import com.sinnau.domain.user.exception.AlreadyRegisteredEmailException;
 import com.sinnau.domain.user.repository.UserRepository;
 import java.time.LocalDateTime;
 
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     // 이메일 중복 확인
     if (isEmailExists(email)) {
-      throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");
+      throw new AlreadyRegisteredEmailException();
     }
 
     // 사용자 객체 생성
