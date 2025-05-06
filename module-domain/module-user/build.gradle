@@ -30,9 +30,5 @@ dependencies {
     // runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'org.mariadb.jdbc:mariadb-java-client'
 
-    // Jackson 의존성 추가 - @JsonIgnore 에러 해결을 위해
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations'
-
     implementation project(':module-common')
 }

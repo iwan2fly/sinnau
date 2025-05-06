@@ -14,10 +14,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AuthApiExceptionHandler {
 
+    // 예외가 발생한 위치 확인
+    private String getExceptionLocation(Exception e) {
+        StackTraceElement element = e.getStackTrace()[0];
+        return String.format("%s.%s(%s:%d)",
+                element.getClassName(),
+                element.getMethodName(),
+                element.getFileName(),
+                element.getLineNumber());
+    }
+
     // 사용자 정의 예외 처리
     @ExceptionHandler(SinnauRuntimeException.class)
     public ResponseEntity<CommonApiResponse<?>> handleSinnauException(SinnauRuntimeException e) {
-        log.error("SinnauRuntimeException: {}", e.getMessage());
+
+        log.error("{}", getExceptionLocation(e), e);
+
         CommonError commonError = CommonError.builder()
                                 .code(e.getCode())
                                 .message(e.getMessage())
@@ -30,7 +42,9 @@ public class AuthApiExceptionHandler {
     // IllegalArgumentException 처리 (입력값 검증 실패 등)
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<CommonApiResponse<?>> handleIllegalArgumentException(IllegalArgumentException e) {
-        log.warn("IllegalArgumentException: {}", e.getMessage());
+
+        log.error("{}", getExceptionLocation(e), e);
+
         CommonError commonError = CommonError.builder()
                                 .code(SinnauErrorCode.UNDEFINED.getCode())
                                 .message(e.getMessage())
@@ -43,7 +57,9 @@ public class AuthApiExceptionHandler {
     // 기타 모든 예외 처리
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CommonApiResponse<?>> handleAllExceptions(Exception e) {
-        log.error("Unexpected error", e);
+
+        log.error("{}", getExceptionLocation(e), e);
+
         CommonError commonError = CommonError.builder()
                                 .code(SinnauErrorCode.UNDEFINED.getCode())
                                 .message(e.getMessage())
