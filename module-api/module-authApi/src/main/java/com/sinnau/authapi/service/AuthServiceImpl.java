@@ -1,5 +1,7 @@
 package com.sinnau.authapi.service;
 
+import com.sinnau.authapi.model.LoginRequest;
+import com.sinnau.authapi.model.LoginResponse;
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
 import com.sinnau.domain.user.entity.User;
@@ -8,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     public SignupResponse signup(SignupRequest signupRequest) {
 
@@ -37,5 +41,31 @@ public class AuthServiceImpl implements AuthService {
         // 4 리턴
         return signupResponse;
 
+    }
+
+
+    public LoginResponse login(LoginRequest loginRequest) {
+
+        // 1. loginRequest 체크
+        if ( loginRequest == null ) throw new IllegalArgumentException( "loginRequest is null" );
+        if ( StringUtils.isEmpty( loginRequest.getEmail() )) throw new IllegalArgumentException( "email is empty" );
+        if ( StringUtils.isEmpty( loginRequest.getPassword() )) throw new IllegalArgumentException( "password is empty" );
+
+        // 2. eamil 로 사용자 조회
+        User user = userService.findByEmail( loginRequest.getEmail() );
+
+        // 3. 입력 비밀번호 인코딩
+        String encPassword = passwordEncoder.encode(loginRequest.getPassword());
+
+        // 4. 비밀번호 비교
+        if ( !encPassword.equals( user.getPassword() ) ) {
+            throw new IllegalArgumentException( "password is incorrect" );
+        }
+
+        // 5. 반환객체 생성 및 값 세팅
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUser( user );
+
+        return loginResponse;
     }
 }

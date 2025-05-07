@@ -50,19 +50,6 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User authenticateUser(String email, String password) {
-    // 이메일로 사용자 조회
-    User user = userRepository.findByEmail(email).orElse(null);
-
-    // 사용자가 존재하고 비밀번호가 일치하는지 확인
-    if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-      return user;
-    }
-
-    return null; // 인증 실패
-  }
-
-  @Override
   public User findByEmail(String email) {
     return userRepository.findByEmail(email).orElse(null);
   }
