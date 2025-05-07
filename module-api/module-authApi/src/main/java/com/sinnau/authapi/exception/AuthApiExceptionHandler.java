@@ -15,20 +15,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AuthApiExceptionHandler {
 
     // 예외가 발생한 위치 확인
-    private String getExceptionLocation(Exception e) {
+    private void loggingExceptionLocation(Exception e) {
         StackTraceElement element = e.getStackTrace()[0];
-        return String.format("%s.%s(%s:%d)",
-                element.getClassName(),
-                element.getMethodName(),
-                element.getFileName(),
-                element.getLineNumber());
+        String location = String.format("%s.%s(%s:%d)", element.getClassName(), element.getMethodName(),
+                            element.getFileName(), element.getLineNumber());
+
+        log.error("{}", location, e);
     }
 
     // 사용자 정의 예외 처리
     @ExceptionHandler(SinnauRuntimeException.class)
     public ResponseEntity<CommonApiResponse<?>> handleSinnauException(SinnauRuntimeException e) {
 
-        log.error("{}", getExceptionLocation(e), e);
+        loggingExceptionLocation(e);
 
         CommonError commonError = CommonError.builder()
                                 .code(e.getCode())
@@ -43,7 +42,7 @@ public class AuthApiExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<CommonApiResponse<?>> handleIllegalArgumentException(IllegalArgumentException e) {
 
-        log.error("{}", getExceptionLocation(e), e);
+        loggingExceptionLocation(e);
 
         CommonError commonError = CommonError.builder()
                                 .code(SinnauErrorCode.UNDEFINED.getCode())
@@ -58,7 +57,7 @@ public class AuthApiExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CommonApiResponse<?>> handleAllExceptions(Exception e) {
 
-        log.error("{}", getExceptionLocation(e), e);
+        loggingExceptionLocation(e);
 
         CommonError commonError = CommonError.builder()
                                 .code(SinnauErrorCode.UNDEFINED.getCode())
