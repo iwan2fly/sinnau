@@ -4,6 +4,7 @@ import com.sinnau.authapi.model.LoginRequest;
 import com.sinnau.authapi.model.LoginResponse;
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
+import com.sinnau.authapi.security.JwtTokenProvider;
 import com.sinnau.domain.user.entity.User;
 import com.sinnau.domain.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     public SignupResponse signup(SignupRequest signupRequest) {
 
@@ -54,17 +56,18 @@ public class AuthServiceImpl implements AuthService {
         // 2. eamil 로 사용자 조회
         User user = userService.findByEmail( loginRequest.getEmail() );
 
-        // 3. 입력 비밀번호 인코딩
-        String encPassword = passwordEncoder.encode(loginRequest.getPassword());
-
-        // 4. 비밀번호 비교
-        if ( !encPassword.equals( user.getPassword() ) ) {
+        // 3. 비밀번호 비교 (수정된 부분)
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             throw new IllegalArgumentException( "password is incorrect" );
         }
+
+        // 4. JWT 토큰 생성
+        String token = jwtTokenProvider.generateToken(user.getEmail());
 
         // 5. 반환객체 생성 및 값 세팅
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setUser( user );
+        loginResponse.setToken( token );
 
         return loginResponse;
     }

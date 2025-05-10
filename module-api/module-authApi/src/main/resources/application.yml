@@ -1,0 +1,6 @@
+spring:
+  # 기존 설정들...
+
+jwt:
+  secret: yourSecretKeyHereMakeItAtLeast32BytesLong
+  expiration: 86400000  # 24시간 (밀리초 단위)
