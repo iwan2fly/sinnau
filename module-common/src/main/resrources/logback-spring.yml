@@ -1,0 +1,17 @@
+# 공통 로깅 설정
+logging:
+  level:
+    root: INFO
+    com.sinnau: INFO
+    org.springframework: WARN
+    org.hibernate: WARN
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n'
+  file:
+    name: logs/sinnau.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
+      total-size-cap: 1GB
