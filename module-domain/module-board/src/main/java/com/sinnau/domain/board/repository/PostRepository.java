@@ -1,6 +1,6 @@
 package com.sinnau.domain.board.repository;
 
-import com.sinnau.domain.board.entity.Post;
+import com.sinnau.domain.board.model.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

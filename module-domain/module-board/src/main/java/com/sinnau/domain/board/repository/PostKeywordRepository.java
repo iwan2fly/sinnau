@@ -1,6 +1,6 @@
 package com.sinnau.domain.board.repository;
 
-import com.sinnau.domain.board.entity.PostKeyword;
+import com.sinnau.domain.board.model.entity.PostKeyword;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.sinnau.domain.board.service;
 
-import com.sinnau.domain.board.entity.Post;
+import com.sinnau.domain.board.model.entity.Post;
 
 import java.util.List;
 import java.util.Optional;

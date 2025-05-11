@@ -1,6 +1,6 @@
 package com.sinnau.domain.board.service;
 
-import com.sinnau.domain.board.entity.PostKeyword;
+import com.sinnau.domain.board.model.entity.PostKeyword;
 
 import java.util.List;
 import java.util.Optional;

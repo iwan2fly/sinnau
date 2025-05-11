@@ -1,4 +1,4 @@
-package com.sinnau.domain.board.entity;
+package com.sinnau.domain.board.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "post_keywords")
+@Table(name = "postKeywords")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,13 +16,13 @@ public class PostKeyword {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String keyword;
+    private Long postKeywordId;
 
     @Column(nullable = false)
     private String keywordType;
+
+    @Column(nullable = false)
+    private String keyword;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postId", nullable = false)

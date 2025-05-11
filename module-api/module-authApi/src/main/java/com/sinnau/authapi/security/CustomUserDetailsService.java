@@ -1,6 +1,6 @@
 package com.sinnau.authapi.security;
 
-import com.sinnau.domain.user.entity.User;
+import com.sinnau.domain.user.model.entity.User;
 import com.sinnau.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

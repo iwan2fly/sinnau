@@ -1,4 +1,4 @@
-package com.sinnau.domain.user.entity;
+package com.sinnau.domain.user.model.object;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -5,7 +5,7 @@ import com.sinnau.authapi.model.LoginResponse;
 import com.sinnau.authapi.model.SignupRequest;
 import com.sinnau.authapi.model.SignupResponse;
 import com.sinnau.authapi.security.JwtTokenProvider;
-import com.sinnau.domain.user.entity.User;
+import com.sinnau.domain.user.model.entity.User;
 import com.sinnau.domain.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

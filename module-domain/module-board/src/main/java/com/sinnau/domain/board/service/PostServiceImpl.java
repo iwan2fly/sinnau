@@ -1,7 +1,7 @@
 package com.sinnau.domain.board.service;
 
-import com.sinnau.domain.board.entity.Post;
-import com.sinnau.domain.board.entity.PostKeyword;
+import com.sinnau.domain.board.model.entity.Post;
+import com.sinnau.domain.board.model.entity.PostKeyword;
 import com.sinnau.domain.board.exception.PostNotFoundException;
 import com.sinnau.domain.board.repository.PostKeywordRepository;
 import com.sinnau.domain.board.repository.PostRepository;
@@ -22,6 +22,8 @@ public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
     private final PostKeywordRepository postKeywordRepository;
+    private final CommentService commentService;
+    private final PostAttacheService postAttacheService;
 
     @Override
     @Transactional(readOnly = true)
@@ -42,15 +44,8 @@ public class PostServiceImpl implements PostService {
                 .content(post.getContent())
                 .author(post.getAuthor())
                 .createdAt(LocalDateTime.now())
-                .postKeywords(new ArrayList<>())
+                .postKeywords("")
                 .build();
-
-        // Add keywords if they exist
-        if (post.getPostKeywords() != null && !post.getPostKeywords().isEmpty()) {
-            for (PostKeyword keyword : post.getPostKeywords()) {
-                newPost.addKeyword(keyword.getKeyword());
-            }
-        }
 
         return postRepository.save(newPost);
     }
@@ -67,19 +62,8 @@ public class PostServiceImpl implements PostService {
                 .author(post.getAuthor())
                 .createdAt(post.getCreatedAt())
                 .updatedAt(LocalDateTime.now())
-                .postKeywords(new ArrayList<>())
+                .postKeywords("")
                 .build();
-
-        // Add keywords from postDetails if they exist, otherwise use existing keywords
-        if (postDetails.getPostKeywords() != null && !postDetails.getPostKeywords().isEmpty()) {
-            for (PostKeyword keyword : postDetails.getPostKeywords()) {
-                updatedPost.addKeyword(keyword.getKeyword());
-            }
-        } else {
-            for (PostKeyword keyword : post.getPostKeywords()) {
-                updatedPost.addKeyword(keyword.getKeyword());
-            }
-        }
 
         return postRepository.save(updatedPost);
     }
@@ -88,6 +72,8 @@ public class PostServiceImpl implements PostService {
     public void deletePost(Long id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException(id + " not found"));
+        commentService.deleteCommentsByPostId(id);
+        postAttacheService.deleteAttachesByPostId(id);
         postRepository.delete(post);
     }
 

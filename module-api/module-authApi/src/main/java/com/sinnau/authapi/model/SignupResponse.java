@@ -1,6 +1,6 @@
 package com.sinnau.authapi.model;
 
-import com.sinnau.domain.user.entity.User;
+import com.sinnau.domain.user.model.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,4 +1,4 @@
-package com.sinnau.domain.board.entity;
+package com.sinnau.domain.board.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,28 +38,20 @@ public class Post {
 
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<PostKeyword> postKeywords = new ArrayList<>();
+    @Column
+    private String postKeywords;
 
-    // Helper methods for managing keywords
+
     public void addKeyword(String keyword) {
-        PostKeyword postKeyword = PostKeyword.builder()
-                .keyword(keyword)
-                .post(this)
-                .build();
-        postKeywords.add(postKeyword);
+        // Implementation needed
     }
 
     public void removeKeyword(String keyword) {
-        postKeywords.removeIf(postKeyword -> postKeyword.getKeyword().equals(keyword));
+        // Implementation needed
     }
 
     public Set<String> getKeywordValues() {
-        Set<String> keywordValues = new HashSet<>();
-        for (PostKeyword postKeyword : postKeywords) {
-            keywordValues.add(postKeyword.getKeyword());
-        }
-        return keywordValues;
+        // Implementation needed
+        return new HashSet<>();
     }
 }

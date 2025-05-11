@@ -1,6 +1,6 @@
 package com.sinnau.domain.user.service;
 
-import com.sinnau.domain.user.entity.User;
+import com.sinnau.domain.user.model.entity.User;
 import com.sinnau.domain.user.exception.AlreadyRegisteredEmailException;
 import com.sinnau.domain.user.repository.UserRepository;
 import java.time.LocalDateTime;
@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
     // 저장 및 반환
     return userRepository.save(user);
+
   }
 
   @Override

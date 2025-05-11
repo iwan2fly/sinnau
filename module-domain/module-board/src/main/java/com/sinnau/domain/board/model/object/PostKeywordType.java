@@ -1,4 +1,4 @@
-package com.sinnau.domain.board.entity;
+package com.sinnau.domain.board.model.object;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

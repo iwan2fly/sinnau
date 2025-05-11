@@ -1,6 +1,6 @@
 package com.sinnau.domain.board.service;
 
-import com.sinnau.domain.board.entity.PostKeyword;
+import com.sinnau.domain.board.model.entity.PostKeyword;
 import com.sinnau.domain.board.exception.PostKeywordNotFoundException;
 import com.sinnau.domain.board.repository.PostKeywordRepository;
 import lombok.RequiredArgsConstructor;
