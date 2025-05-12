@@ -1,11 +1,13 @@
 package com.sinnau.domain.board.service;
 
+import com.sinnau.domain.board.event.PostedEvent;
 import com.sinnau.domain.board.model.entity.Post;
 import com.sinnau.domain.board.model.entity.PostKeyword;
 import com.sinnau.domain.board.exception.PostNotFoundException;
 import com.sinnau.domain.board.repository.PostKeywordRepository;
 import com.sinnau.domain.board.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,7 @@ public class PostServiceImpl implements PostService {
     private final PostKeywordRepository postKeywordRepository;
     private final CommentService commentService;
     private final PostAttacheService postAttacheService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     @Transactional(readOnly = true)
@@ -47,7 +50,9 @@ public class PostServiceImpl implements PostService {
                 .postKeywords("")
                 .build();
 
-        return postRepository.save(newPost);
+        Post savedPost = postRepository.save(newPost);
+        eventPublisher.publishEvent(PostedEvent.from(savedPost));
+        return savedPost;
     }
 
     @Override
